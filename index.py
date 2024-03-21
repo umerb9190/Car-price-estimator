@@ -1,0 +1,1 @@
+print("mubashir outr zindabad")
