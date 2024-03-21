@@ -1,1 +1,1 @@
-print("mubashir outr zindabad")
+print("mera boss uper hai")
