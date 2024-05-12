@@ -3,36 +3,313 @@
 <head xmlns="http://www.w3.org/1999/xhtml">
     <meta charset="UTF-8">
     <title>Car Price Predictor</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="static\css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
+<style>
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#fff;
+    background-image: url('bg.jpeg'); /* Set the background image */
+    background-size: contain;
+    /* background-size: cover;  */
+    background-position: right top; /* Position the image to the right */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    
+}
+.container {
+
+    width: 50%; /* Covering half of the screen */
+    height: 100vh; /* 100% of the viewport height */
+    max-width: none; /* Disable max-width */
+    margin: 0; /* Remove all margins */
+    padding: 10px;
+    background-color: #fff;
+    /* border-radius: 20px; */
+    border: 3px #fd7e14 ;
+    /* box-shadow: 0 0 40px #613d1fb2; */
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box; 
+}
+.container:hover {
+    box-shadow: 0 0 70px #fd7e14; /* Orange shadow on hover */
+  }
+.container .icon{
+  font-size: 50px;
+  position:relative;
+  top: 1px;
+  left: 272px;
+  /* transform: rotate(-13deg) */
+}
+.container .icon i{
+    color:#2f72ce;
+}
+.container h1{
+    font-size: 32px;
+    font-weight: 1000;
+    line-height: 50px;
+    text-align: center;
+    color:#000000da;
+}
+
+.card-body {
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+.Brand{
+    text-align:center;
+    padding-bottom: 15px;
+}
+.Brand label {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+    
+}
+.Brand select {
+    /* Your CSS styles for the select element inside .Brand */
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:#2f72ce;
+    border: 1px solid #00000011;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.Model{
+    text-align:center;
+    padding-bottom: 15px;
+}
+.Model label {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+    
+}
+.Model select {
+    /* Your CSS styles for the select element inside .Brand */
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:#2f72ce;
+    border: 1px solid #00000011;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.Purchase{
+    text-align:center;
+    padding-bottom: 15px;
+}
+.Purchase label {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+    
+}
+.Purchase select {
+    /* Your CSS styles for the select element inside .Brand */
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:#2f72ce;
+    border: 1px solid #00000011;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.Fuel{
+    text-align:center;
+    padding-bottom: 15px;
+}
+.Fuel label {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+    
+}
+.Fuel select {
+    /* Your CSS styles for the select element inside .Brand */
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:#2f72ce;
+    border: 1px solid #00000011;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.Mileage{
+    text-align:center;
+    padding-bottom: 15px;
+}
+.Mileage label {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+    
+}
+.Mileage input{
+    /* Your CSS styles for the select element inside .Brand */
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:#2f72ce;
+    border: 1px solid #00000011;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.Submit .btn{
+    background-color:#2f72ce ;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+}
+.Submit .btn:hover {
+    background-color: #052858; /* Change color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+.PRD{
+     /* Your CSS styles for the select element inside .Brand */
+     width: 50%;
+    padding: 4px;
+    margin-bottom: 4px;
+    color:#2f72ce;
+    border: 1px solid #00000011;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+.PRD h4{
+    text-align: center;
+}
+#canvas{
+    border: 2px solid black;
+}   
+#chatboarder {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              border-style: solid;
+              background-color: #f6f9f6;
+              border:2px solid #FFB524;
+              border-width: 3px;
+              padding-top: 5px;
+              padding-bottom: 15px;
+              padding-right: 20px;
+              padding-left: 15px;
+              border-radius: 15px;
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+            }
+            #chatboarder:hover {
+             border:2px solid #FFB524;
+             box-shadow:0px 0px 10px 10px  #FFB524; /* Add shadow effect on hover */
+            }
+            #chatboarder .chatbox-heading {
+              text-align: center;
+              display: block;
+              font-size: 1.5em;
+              margin-block-start: 0.83em;
+              margin-block-end: 0.83em;
+              margin-inline-start: 0px;
+              margin-inline-end: 0px;
+              font-weight: bold;
+             unicode-bidi: isolate;
+            }
+            #chatboarder .chatbox-info {
+            text-align: center;
+            color: blueviolet;
+            font-size: small;
+           }
+        
+            .chatlog {
+              font: 15px arial, sans-serif;
+            }
+        
+            #chatbox {
+              font: 15px arial, sans-serif;
+              height: 22px;
+              width: 100%;
+              border-radius: 2px;
+            }
+        
+            h1 {
+              margin: auto;
+            }
+        
+            pre {
+              background-color: #f0f0f0;
+              margin-left: 20px;
+            }
+        
+            .exitButton {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              padding: 5px 10px;
+              background-color: #ff0000;
+              color: #ffffff;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+        
+            .exitButton:hover {
+              background-color: #cc0000;
+            }
+        
+            .chatButton {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              padding: 10px 20px;
+              background-color: #b53202;
+              color: #ffffff;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+        
+            .chatButton:hover {
+              background-color: #0056b3;
+            }
+            
+</style>
 </head>
-<body class="bg-dark">
+<body>
 
 <div class="container">
+    <div class="icon">
+        <i class="fa-solid fa-car"></i>
+    </div>
     <div class="row">
         <div class="card mt-50" style="width: 100%; height: 100%">
+
             <div class="card-header" style="text-align: center">
-                <h1>Welcome to Car Price Predictor</h1>
+                <h1>Car Price Predictor</h1>
             </div>
             <div class="card-body">
-                <div class="col-12" style="text-align: center">
-                    <h5>This app predicts the price of a car you want to sell. Try filling the details below: </h5>
-                </div>
                 <br>
                 <form method="post" accept-charset="utf-8" name="Modelform">
-                    <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Select the company:</b> </label><br>
+                    <div class="Brand">
+                        <label><b>Choose A Car Brand:</b> </label><br>
                         <select class="selectpicker form-control" id="company" name="company" required="1"
                                 onchange="load_car_models(this.id,'car_models')">
                             {% for company in companies %}
@@ -40,39 +317,39 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Select the model:</b> </label><br>
+                    <div class="Model">
+                        <label><b>Choose A Car Model:</b> </label><br>
                         <select class="selectpicker form-control" id="car_models" name="car_models" required="1">
                         </select>
                     </div>
-                    <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Select Year of Purchase:</b> </label><br>
+                    <div class="Purchase" style="text-align: center">
+                        <label><b>Choose Year of Purchase:</b> </label><br>
                         <select class="selectpicker form-control" id="year" name="year" required="1">
                             {% for year in years %}
                             <option value="{{ year }}">{{ year }}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Select the Fuel Type:</b> </label><br>
+                    <div class="Fuel">
+                        <label><b>Choose Fuel Type:</b> </label><br>
                         <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required="1">
                             {% for fuel in fuel_types %}
                             <option value="{{ fuel }}">{{ fuel }}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Enter the Number of Kilometres that the car has travelled:</b> </label><br>
+                    <div class="Mileage">
+                        <label><b>Enter Mileage:</b> </label><br>
                         <input type="text" class="form-control" id="kilo_driven" name="kilo_driven"
                                placeholder="Enter the kilometres driven ">
                     </div>
-                    <div class="col-md-10 form-group" style="text-align: center">
+                    <div class="Submit" style="text-align: center">
                         <button  class="btn btn-primary form-control" onclick="send_data()">Predict Price</button>
                     </div>
                 </form>
                 <br>
                 <div class="row">
-                    <div class="col-12" style="text-align: center">
+                    <div class="PRD">
                         <h4><span id="prediction"></span></h4>
                     </div>
                 </div>
@@ -80,7 +357,24 @@
         </div>
     </div>
 </div>
+<button class="chatButton" id="openChatButton">Contact Us</button>
 
+<div id='chatboarder' style="display: none;">
+    <h2 class="chatbox-heading">ChatBox</h2>
+    <p class="chatbox-info">You May Start conversation with "Hi"</p>
+    <!-- <p class="chatbox-info">For Order Number just Input Order Number in #XXX format</p> -->
+    <p class="chatbox-info">Don't Misbehave ChatBot is bit aggressive</p>
+    <p class="chatbox-info">To End conversation just Type "Exit"</p>
+    <p id="chatlog7" class="chatlog">&nbsp;</p>
+    <p id="chatlog6" class="chatlog">&nbsp;</p>
+    <p id="chatlog5" class="chatlog">&nbsp;</p>
+    <p id="chatlog4" class="chatlog">&nbsp;</p>
+    <p id="chatlog3" class="chatlog">&nbsp;</p>
+    <p id="chatlog2" class="chatlog">&nbsp;</p>
+    <p id="chatlog1" class="chatlog">&nbsp;</p>
+    <input type="text" name="chat" id="chatbox">
+    <button id="exitButton" class="exitButton">Exit</button>
+  </div>
 <script>
 
     function load_car_models(company_id,car_model_id)
@@ -121,7 +415,7 @@
         document.getElementById('prediction').innerHTML="Wait! Predicting Price.....";
         xhr.onreadystatechange = function(){
             if(xhr.readyState == XMLHttpRequest.DONE){
-                document.getElementById('prediction').innerHTML="Prediction: ₹"+xhr.responseText;
+                document.getElementById('prediction').innerHTML="Prediction: Rs."+xhr.responseText;
 
             }
         };
@@ -130,6 +424,111 @@
 
         xhr.send(fd);
     }
+</script>
+
+
+<script>
+    
+// chatbot
+var messages = [],
+          lastUserMessage = "",
+          botMessage = "",
+          botName = 'Fazeel';
+    
+        let currentOrder = '';
+    
+        function chatbotResponse() {
+          var userMessageLower = lastUserMessage.replace(/[^a-zA-Z0-9#]/g, '').toLowerCase();
+    
+          botMessage = "Zain Number Dedo";
+    
+          if (userMessageLower.includes('hi') || userMessageLower.includes('aoa')) {
+            botMessage = 'Zain Number Dedo';
+          }
+          if (userMessageLower.includes('exit')) {
+            botMessage = 'Zain Number Dedo';
+          }
+        //   if (userMessageLower.includes('order') || userMessageLower.includes('return') || userMessageLower.includes('exchange') || userMessageLower.includes('ordered') || userMessageLower.includes('refund')) {
+        //     botMessage = 'Plz Share Order Number!';
+        //   }
+        //   if (userMessageLower.includes('bc') || userMessageLower.includes('ghandu') || userMessageLower.includes('lora') || userMessageLower.includes('benchod') || userMessageLower.includes('yakki')) {
+        //     botMessage = 'Behn K Lorray , Tameez say baat ker!';
+        //   }
+        //   if (userMessageLower.includes('fuck') || userMessageLower.includes('shitt') || userMessageLower.includes('dickhead') || userMessageLower.includes('idiot') || userMessageLower.includes('shutup')) {
+        //     botMessage = 'Mother Fucker Dont Cross Limits, Talk Respectfully !';
+        //   }
+          
+          const orderNumberRegex = /#([1-9]+)/;
+          const matches = userMessageLower.match(orderNumberRegex);
+    
+        //   if (matches && matches[1]) {
+        //     const orderNumber = matches[1];
+        //     if (currentOrder === orderNumber) {
+        //       botMessage = `Order  #${orderNumber} has already been transferred.`;
+        //     } else {
+        //       currentOrder = orderNumber;
+        //       botMessage = `Order  #${orderNumber} acknowledged. Okay Case Transferred.`;
+        //     }
+        //   }
+    
+          if (lastUserMessage === 'botname?' || lastUserMessage === 'botname' || lastUserMessage === 'chatbot') {
+            botMessage = 'My name is Hassan ' + botName;
+          }
+          Speech(botMessage);
+        }
+    
+        function newEntry() {
+          if (document.getElementById("chatbox").value != "") {
+            lastUserMessage = document.getElementById("chatbox").value;
+            document.getElementById("chatbox").value = "";
+            messages.push(lastUserMessage);
+            chatbotResponse();
+            messages.push("<b>" + botName + ":</b> " + botMessage);
+            for (var i = 1; i < 8; i++) {
+              if (messages[messages.length - i])
+                document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
+            }
+          }
+        }
+        
+         //text to Speech
+    //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
+    function Speech(say) {
+      if ('speechSynthesis' in window) {
+        var utterance = new SpeechSynthesisUtterance(say);
+        //utterance.volume = 1; // 0 to 1
+        //utterance.rate = 1; // 0.1 to 10
+        //utterance.pitch = 1; //0 to 2
+        //utterance.text = 'Hello World';
+        //utterance.lang = 'en-US';
+        speechSynthesis.speak(utterance);
+      }
+    }
+    
+    //runs the keypress() function when a key is pressed
+    document.onkeypress = keyPress;
+    //if the key pressed is 'enter' runs the function newEntry()
+    function keyPress(e) {
+      var x = e || window.event;
+      var key = (x.keyCode || x.which);
+      if (key == 13 || key == 3) {
+        //runs this function when enter is pressed
+        newEntry();
+      }
+    }
+    
+        document.getElementById('exitButton').addEventListener('click', function() {
+          document.getElementById('chatboarder').style.display = 'none';
+        });
+    
+        document.getElementById('openChatButton').addEventListener('click', function() {
+          document.getElementById('chatboarder').style.display = 'block';
+        });
+      
+    
+        document.onkeypress = keyPress;
+
+    
 </script>
 
 
